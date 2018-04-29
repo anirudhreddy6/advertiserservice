@@ -1,6 +1,5 @@
 package com.anirudh.advertiserservice.service;
 
-        import com.anirudh.advertiserservice.DAO.AdvertiserDAO;
         import com.anirudh.advertiserservice.mapper.AdvertiserMapper;
         import com.anirudh.advertiserservice.model.Advertiser;
         import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,7 @@ package com.anirudh.advertiserservice.service;
 @Service
 public class AdvertiserService {
 
-    @Autowired
-    private AdvertiserDAO advertiserDAO;
+
 
     @Autowired
     private AdvertiserMapper advertiserMapper;
