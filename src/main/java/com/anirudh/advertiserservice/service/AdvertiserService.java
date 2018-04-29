@@ -45,7 +45,7 @@ public class AdvertiserService {
 
     }
 
-    public boolean checkTransaction(String name,int transactionAmount) {
+    public boolean checkTransaction(String name,double transactionAmount) {
     Advertiser advertiser = advertiserMapper.selectAdvertiser(name);
 
         if(advertiser != null)
