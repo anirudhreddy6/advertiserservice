@@ -89,13 +89,24 @@ public class AdvertiserController {
 
     @GetMapping(value = "checkTransaction/{name}/{transactionAmount}")
     @ApiOperation(value = "Returns a boolean value which tells us if the trasaction is possible or not")
-    public ResponseEntity checkTransaction(@RequestParam(value="name",required = true) String name,@RequestParam(value="transactionAmount",required=true) double transactionAmount) throws Exception
+    public ResponseEntity<Boolean> checkTransaction(@RequestParam(value="name",required = true) String name,@RequestParam(value="transactionAmount",required=true) double transactionAmount) throws Exception
     {
             if(advertiserService.getAdvertiserByName(name) == null || transactionAmount <=0)
             {
                 throw new Exception("Transaction amount should be a positive number(positivie integer or of type dobule).Also please check if the AdvertiserName is a valid name.");
             }
             return new ResponseEntity(advertiserService.checkTransaction(name,transactionAmount),HttpStatus.OK);
+    }
+
+    @PostMapping(value="postTransaction/{name}/{transactioAmount}")
+    @ApiOperation(value="Reducts the credit limt of the advertiser")
+    public ResponseEntity<Advertiser> postTransaction(@RequestParam(value="name",required = true) String name,@RequestParam(value="transactionAmount",required=true) double transactionAmount) throws Exception
+    {
+        if(advertiserService.getAdvertiserByName(name) == null || transactionAmount <=0 || transactionAmount>advertiserService.getAdvertiserByName(name).getCreditLimit())
+        {
+            throw new Exception("Transaction amount should be a positive number(positivie integer or of type dobule) and be less than the credit limit of the Advertiser.Also please check if the AdvertiserName is a valid name.");
+        }
+        return new ResponseEntity(advertiserService.postTransaction(name,transactionAmount),HttpStatus.OK);
     }
 
 }

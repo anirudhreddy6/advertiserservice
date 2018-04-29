@@ -8,9 +8,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 
-@Getter@Setter
-@NoArgsConstructor
-@RequiredArgsConstructor
+
 public class Advertiser {
 
     @NotNull
@@ -20,7 +18,7 @@ public class Advertiser {
     private double creditLimit;
 
 
-    public Advertiser(String advertiserName, String contactName, int creditLimit) {
+    public Advertiser(String advertiserName, String contactName, double creditLimit) {
         this.advertiserName = advertiserName;
         this.contactName = contactName;
         this.creditLimit = creditLimit;
@@ -49,7 +47,7 @@ public class Advertiser {
         return creditLimit;
     }
 
-    public void setCreditLimit(int creditLimit) {
+    public void setCreditLimit(double creditLimit) {
         this.creditLimit = creditLimit;
     }
 

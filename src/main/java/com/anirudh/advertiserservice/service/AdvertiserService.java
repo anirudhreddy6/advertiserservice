@@ -55,4 +55,13 @@ public class AdvertiserService {
         }
         return false;
     }
+
+    public Advertiser postTransaction(String name,double transactionAmount)
+    {
+        Advertiser advertiser = advertiserMapper.selectAdvertiser(name);
+        advertiser.setCreditLimit(advertiser.getCreditLimit()-transactionAmount);
+        advertiserMapper.updateAdvertiserByName(advertiser);
+        return getAdvertiserByName(name);
+    }
+
 }
