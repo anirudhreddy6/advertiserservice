@@ -30,7 +30,7 @@ public class AdvertiserController {
     //##GET ALL ADVERTISERS##
 
     @GetMapping
-    @ApiOperation(value = "Return All Advertisers")
+    @ApiOperation(value = "List All Advertisers")
     public ResponseEntity<?> getAllAdvertisers() {
 
         return new ResponseEntity(advertiserService.getALLAdvertisers(), HttpStatus.OK);
@@ -54,7 +54,7 @@ public class AdvertiserController {
 
     //##Delete ADVERTISER
     @DeleteMapping(value="/{name}")
-    @ApiOperation(value="Delete Adbertiser By Name")
+    @ApiOperation(value="Delete Advertiser By Name")
     public ResponseEntity deleteAdvertiserByName(@PathVariable("name") String name) throws Exception
     {
         if(advertiserService.getAdvertiserByName(name) == null)
@@ -88,7 +88,7 @@ public class AdvertiserController {
     }
 
     @GetMapping(value = "checkTransaction/{name}/{transactionAmount}")
-    @ApiOperation(value = "Returns a boolean value which tells us if the trasaction is possible or not")
+    @ApiOperation(value = "Returns a boolean value which describes if the Advertiser has enough credit limit or not.")
     public ResponseEntity<Boolean> checkTransaction(@RequestParam(value="name",required = true) String name,@RequestParam(value="transactionAmount",required=true) double transactionAmount) throws Exception
     {
             if(advertiserService.getAdvertiserByName(name) == null || transactionAmount <=0)
@@ -99,7 +99,7 @@ public class AdvertiserController {
     }
 
     @PostMapping(value="postTransaction/{name}/{transactioAmount}")
-    @ApiOperation(value="Reducts the credit limt of the advertiser")
+    @ApiOperation(value="Deducts the credit limt of the Advertiser")
     public ResponseEntity<Advertiser> postTransaction(@RequestParam(value="name",required = true) String name,@RequestParam(value="transactionAmount",required=true) double transactionAmount) throws Exception
     {
         if(advertiserService.getAdvertiserByName(name) == null || transactionAmount <=0 || transactionAmount>advertiserService.getAdvertiserByName(name).getCreditLimit())
