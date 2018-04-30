@@ -65,7 +65,7 @@ public class AdvertiserController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = "application/json")
     @ApiOperation(value = "Create an Advertiser")
-    public ResponseEntity<List<Advertiser>> createAdvertiser(@RequestBody Advertiser advertiser) throws Exception
+    public ResponseEntity<Advertiser> createAdvertiser(@RequestBody Advertiser advertiser) throws Exception
     {
         if(advertiser.getAdvertiserName() == null || advertiser.getContactName() == null)
         {

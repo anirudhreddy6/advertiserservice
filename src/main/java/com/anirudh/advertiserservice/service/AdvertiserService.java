@@ -21,11 +21,11 @@ public class AdvertiserService {
         return advertiserMapper.findAll();
     }
 
-    public Collection<Advertiser> createAdvertiser(Advertiser advertiser)
+    public Advertiser createAdvertiser(Advertiser advertiser)
     {
 
         advertiserMapper.insertAdvertiser(advertiser);
-        return advertiserMapper.findAll();
+        return advertiserMapper.selectAdvertiser(advertiser.getAdvertiserName());
     }
 
     public Advertiser getAdvertiserByName(String name) {

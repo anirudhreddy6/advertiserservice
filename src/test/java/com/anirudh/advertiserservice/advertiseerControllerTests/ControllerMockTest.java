@@ -5,12 +5,14 @@ import com.anirudh.advertiserservice.controller.AdvertiserController;
 import com.anirudh.advertiserservice.mapper.AdvertiserMapper;
 import com.anirudh.advertiserservice.model.Advertiser;
 import com.anirudh.advertiserservice.service.AdvertiserService;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.RegularExpression;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.internal.matchers.Matches;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -24,10 +26,12 @@ import org.json.JSONObject;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -50,19 +54,17 @@ public class ControllerMockTest {
 
 
     @Test
-    public void getAllAdvertisersShouldReturn2Records() throws Exception
-    {
+    public void getAllAdvertisersShouldReturn2Records() throws Exception {
         List<Advertiser> advertiserList = new ArrayList<Advertiser>();
         advertiserList.add(new Advertiser("Advertiser1", "ContactName1", 10000));
         advertiserList.add(new Advertiser("Advertiser2", "ContactName2", 10000.00));
         advertiserList.add(new Advertiser("Advertiser3", "ContactName3", 1000.0));
         Mockito.when(advertiserService.getALLAdvertisers()).thenReturn(advertiserList);
-        mockMvc.perform(get("/api/advertiser").accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk()).andExpect(jsonPath("$",hasSize(3)));
+        mockMvc.perform(get("/api/advertiser").accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(3)));
     }
 
     @Test
-    public void getAdvertiserShouldReturnSingleRecord() throws Exception
-    {
+    public void getAdvertiserShouldReturnSingleRecord() throws Exception {
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
                 "/api/Advertiser/Advertiser1").accept(
@@ -82,9 +84,13 @@ public class ControllerMockTest {
         advertiser.setContactName("contact1");
         advertiser.setCreditLimit(100.00);
 
+
         String jsonString = "{\"advertiserName\":\"Advertiser2\",\"contactName\":\"ContactName2\",\"creditLimit\":6000.0}";
-        System.out.println(jsonString);
-        MockHttpServletResponse response= this.mockMvc.perform(post("/api/Advertiser").contentType(MediaType.APPLICATION_JSON).content(asJsonString)
+        //System.out.println(jsonString);
+        MvcResult result= this.mockMvc.perform(post("/api/advertiser").contentType(MediaType.APPLICATION_JSON).content(jsonString)).andReturn();
+        this.mockMvc.perform(post("/api/advertiser").contentType(MediaType.APPLICATION_JSON).content(jsonString)).andExpect(status().isCreated());
+
+    }
 }
 
 
