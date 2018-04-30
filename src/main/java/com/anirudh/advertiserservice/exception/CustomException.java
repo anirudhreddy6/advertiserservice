@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class ExceptionController extends ResponseEntityExceptionHandler {
+public class CustomException extends ResponseEntityExceptionHandler {
 
 
     @ExceptionHandler(Exception.class)

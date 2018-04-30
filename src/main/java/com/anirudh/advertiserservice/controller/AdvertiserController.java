@@ -96,7 +96,7 @@ public class AdvertiserController {
             return new ResponseEntity(advertiserService.checkTransaction(name,transactionAmount),HttpStatus.OK);
     }
 
-    @PostMapping(value="postTransaction/{name}/{transactioAmount}")
+    @PostMapping(value="postTransaction/{name}/{transactionAmount}")
     @ApiOperation(value="Deducts the credit limt of the Advertiser")
     public ResponseEntity<Advertiser> postTransaction(@RequestParam(value="name",required = true) String name,@RequestParam(value="transactionAmount",required=true) double transactionAmount) throws Exception
     {
