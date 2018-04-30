@@ -41,9 +41,13 @@ GitHub: https://github.com/anirudhreddy6/advertiserservice
 Swagger UI Endpoint: http://localhost:8080/swagger-ui.html#
 
 Management Endpoint:
+
 ManagementPort: 8090
+
 BasePath: /api/advertiser
+
 Management Info Endpoint: http://localhost:8090/api/advertiser/info
+
 Response from Info Endpoint:
 
 {"app":{"version":"1.0.0","description":"This Application supports all CRUD operations on the Advertiser service.","name":"Advertiser Service API Application"}}
