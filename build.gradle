@@ -4,15 +4,21 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
+		jcenter()
 		maven {
 			url "https://plugins.gradle.org/m2/"
 		}
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}","io.franzbecker:gradle-lombok:1.13")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 
 	}
 
+}
+
+plugins {
+	id 'io.franzbecker.gradle-lombok' version '1.13'
+	id 'java'
 }
 
 apply plugin: 'java'
@@ -35,7 +41,7 @@ dependencies {
 	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
 	compile('io.springfox:springfox-swagger2:2.7.0')
 	compile('io.springfox:springfox-swagger-ui:2.7.0')
-	compileOnly("org.projectlombok:lombok:1.16.20")
+	compile('org.projectlombok:lombok:0.11.0')
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

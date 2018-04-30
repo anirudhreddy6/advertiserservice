@@ -1,14 +1,14 @@
 package com.anirudh.advertiserservice.model;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 
 
+@Getter@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Advertiser {
 
     @NotNull
@@ -17,7 +17,7 @@ public class Advertiser {
     private String contactName;
     private double creditLimit;
 
-
+/*
     public Advertiser(String advertiserName, String contactName, double creditLimit) {
         this.advertiserName = advertiserName;
         this.contactName = contactName;
@@ -27,6 +27,8 @@ public class Advertiser {
     {
 
     }
+
+
 
     public String getAdvertiserName() {
         return advertiserName;
@@ -50,6 +52,9 @@ public class Advertiser {
     public void setCreditLimit(double creditLimit) {
         this.creditLimit = creditLimit;
     }
+
+
+    */
 
 
 
