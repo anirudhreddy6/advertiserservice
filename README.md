@@ -62,9 +62,13 @@ Design:
 
 6.)configuration:SwaggerConfiguration
 
+7.)Data in managed in h2db with mybatis.
+
+8.)Onstart up ,app creates the Advertiser schema reading the schema.sql and 2 rows of advertiser records reading the data.sql for testing purpose.
+
 Running the APP Dockerway:
 
-1.Ensure docker is running on your local machine
+1.Ensure docker is running on your local machine.
 
 2.)navigate to folder where dockerfile is present
 
