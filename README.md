@@ -79,9 +79,10 @@ Running the APP Dockerway:
 
 3.)Steps:
         gradle build
-        docker build
+
         docker build -f Dockerfile -t advertisermicroservice .
-        docker run -it  -p 8080:8080  advertisermicroservice
+
+        docker run -it  -p 8080:8080 -p 8090:8090  advertisermicroservice
 
 4.)Use the below swagger URL to test Endpoint:
     http://localhost:8080/swagger-ui.html#
