@@ -50,11 +50,35 @@ Response from Info Endpoint:
 
 
 Design:
-Model:Advertiser (advertiserName: String,contactName: String, creditLimit: double)\n
-Service: AdvertiserService
-Controllers:AdvertiserController(GET,POST,PUT,DELETE,GET All Advertisers,Check Transaction,Post Transaction to Deduct)
-exception:CustomException
-mapper:AdvertiserMapper
-configuration:SwaggerConfiguration
+1.)Model:Advertiser (advertiserName: String,contactName: String, creditLimit: double)
 
-Note: Tested all the above endpoints with swagger and postman.My test cases still need some updates for better coverage.
+2.)Service: AdvertiserService
+
+3.)Controllers:AdvertiserController(GET,POST,PUT,DELETE,GET All Advertisers,Check Transaction,Post Transaction to Deduct)
+
+4.)exception:CustomException
+
+5.)mapper:AdvertiserMapper
+
+6.)configuration:SwaggerConfiguration
+
+Running the APP Dockerway:
+1.Ensure docker is running on your local machine
+
+2.)navigate to folder where dockerfile is present
+
+3.)Steps:
+        gradle build
+        docker build
+        docker build -f Dockerfile -t advertisermicroservice .
+        docker run -it  -p 8080:8080  advertisermicroservice
+
+4.)Use the below swagger URL to test Endpoint:
+    http://localhost:8080/swagger-ui.html#
+
+5.)Use the below URL to test in any rest client
+   http://localhost:8080/api/advertiser
+
+
+
+Note: Tested all the above endpoints with swagger and postman.My test cases still need updates for better coverage.
