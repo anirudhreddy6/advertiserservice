@@ -50,6 +50,7 @@ Response from Info Endpoint:
 
 
 Design:
+
 1.)Model:Advertiser (advertiserName: String,contactName: String, creditLimit: double)
 
 2.)Service: AdvertiserService
