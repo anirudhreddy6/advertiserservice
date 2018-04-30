@@ -63,6 +63,7 @@ Design:
 6.)configuration:SwaggerConfiguration
 
 Running the APP Dockerway:
+
 1.Ensure docker is running on your local machine
 
 2.)navigate to folder where dockerfile is present
