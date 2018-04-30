@@ -46,12 +46,11 @@ public class AdvertiserService {
     public boolean checkTransaction(String name,double transactionAmount) {
     Advertiser advertiser = advertiserMapper.selectAdvertiser(name);
 
-        if(advertiser != null)
+        if(advertiser != null && advertiser.getCreditLimit() >= transactionAmount)
         {
-            if(advertiser.getCreditLimit() >= transactionAmount)
-            {
+
                 return true;
-            }
+
         }
         return false;
     }

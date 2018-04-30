@@ -5,7 +5,7 @@ import com.anirudh.advertiserservice.model.Advertiser;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Collection;
-import java.util.List;
+
 
 @Mapper
 public interface AdvertiserMapper {

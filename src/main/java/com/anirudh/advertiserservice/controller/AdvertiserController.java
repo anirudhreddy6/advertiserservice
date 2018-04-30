@@ -13,8 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 @RestController
 @RequestMapping(path="api/advertiser")
@@ -29,7 +29,7 @@ public class AdvertiserController {
 
     @GetMapping
     @ApiOperation(value = "List All Advertisers")
-    public ResponseEntity<?> getAllAdvertisers() {
+    public ResponseEntity<List<Advertiser>> getAllAdvertisers() {
 
         return new ResponseEntity(advertiserService.getALLAdvertisers(), HttpStatus.OK);
     }
@@ -102,7 +102,7 @@ public class AdvertiserController {
     {
         if(advertiserService.getAdvertiserByName(name) == null || transactionAmount <=0 || transactionAmount>advertiserService.getAdvertiserByName(name).getCreditLimit())
         {
-            throw new Exception("Transaction amount should be a positive number(positivie integer or of type dobule) and be less than the credit limit of the Advertiser.Also please check if the AdvertiserName is a valid name.");
+            throw new RuntimeException("Transaction amount should be a positive number(positivie integer or of type dobule) and be less than the credit limit of the Advertiser.Also please check if the AdvertiserName is a valid name.");
         }
         return new ResponseEntity(advertiserService.postTransaction(name,transactionAmount),HttpStatus.OK);
     }
