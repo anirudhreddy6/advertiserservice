@@ -50,7 +50,7 @@ Response from Info Endpoint:
 
 
 Design:
-Model:Advertiser (advertiserName: String,contactName: String, creditLimit: double)
+Model:Advertiser (advertiserName: String,contactName: String, creditLimit: double)\n
 Service: AdvertiserService
 Controllers:AdvertiserController(GET,POST,PUT,DELETE,GET All Advertisers,Check Transaction,Post Transaction to Deduct)
 exception:CustomException
